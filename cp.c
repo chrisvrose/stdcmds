@@ -32,9 +32,11 @@ int main(int argc, char* argv[]){
                 copiedBytes+=lastCopySize;
                 fwrite(buffer,1,lastCopySize,np);
             }
-                bSize pS = prettySize(copiedBytes);
-                printf("I:Copied: %0.2f%c bytes\n",pS.truncatedSize,pS.modifier);
+            bSize pS = prettySize(copiedBytes);
+            printf("I:Copied: %0.2f%c bytes\n",pS.truncatedSize,pS.modifier);
+            fclose(np);
         }
+        fclose(op);
     }
     return 0;
 }
