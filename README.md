@@ -7,4 +7,4 @@ College, thats why. Some very basic implementations of some standard commands fo
 - [X] cp
 - [X] mv
 - [ ] ls
-- [ ] rm
+- [X] rm
