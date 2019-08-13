@@ -5,6 +5,6 @@ College, thats why. Some very basic implementations of some standard commands fo
 ## To-Do
 
 - [X] cp
-- [ ] mv
+- [X] mv
 - [ ] ls
 - [ ] rm
