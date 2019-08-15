@@ -1,6 +1,10 @@
 #ifndef STDCMD_GEN_H
 #define STDCMD_GEN_H
 
+
+/**Requires `unsigned char getSetBits = getSet(argv,argc);`
+ * Bits - hivl
+*/
 #define CHECKBIT(a) ((getSetBits & 1<<a)==1<<a)
 
 struct bS{
