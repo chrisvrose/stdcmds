@@ -1,13 +1,4 @@
-typedef struct bS{
-    float truncatedSize;
-    char modifier;
-} bSize;
-
-typedef struct settingS{
-    unsigned char l;
-    unsigned char v;
-}settingS;
-
+#include<gen.h>
 
 /*
     Div - 1024
@@ -45,16 +36,29 @@ bSize prettySize(long int bytes){
     return returnable;
 }
 
-settingS getSet(char* input){
-    settingS settings = (settingS){.l=0,.v=0};
-    for(int i=1;input[i]!='\0';i++){
-        if(input[i]=='l'){
-            settings.l=1;
-        }
-        else if(input[i]=='v'){
-            settings.v=1;
+///Store information about passed flags into an int flag holder.
+// bits - hivl
+unsigned char getSet(char** argv,int argc){
+    unsigned char settings=0;
+    for(int i=0;i<argc;i++){
+        if(argv[i][0]=='-'){
+            for(int j=1;argv[i][j]!='\0';j++){
+                if(argv[i][j]=='l'){
+                    settings |= 1<<0;
+                }
+                else if(argv[i][j]=='v'){
+                    settings |= 1<<1;
+                }
+                else if(argv[i][j]=='i'){
+                    settings |= 1<<2;
+                }
+                else if(argv[i][j]=='h'){
+                    settings |= 1<<3;
+                }
+            }
         }
     }
+    
     return settings;
 
 }

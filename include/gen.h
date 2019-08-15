@@ -1,11 +1,19 @@
-struct bS;
+#ifndef STDCMD_GEN_H
+#define STDCMD_GEN_H
+
+#define CHECKBIT(a) ((getSetBits & 1<<a)==1<<a)
+
+struct bS{
+    float truncatedSize;
+    char modifier;
+};
 typedef struct bS bSize;
 
-struct settingS;
-typedef struct settingS settingS;
 
 bSize prettySize(long int);
 
-settingS getSet(char*);
+unsigned char getSet(char**,int);
 
 int compareargc(int,int);
+
+#endif

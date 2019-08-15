@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<gen.h>
 
+
+
 // Buffer size to use for copying, in bytes
 #define BSIZE 64
 
@@ -12,9 +14,8 @@ int main(int argc, char* argv[]){
         fprintf(stderr,"E:Too few arguments: %d\nUsage: cp <oldpath> <newpath>\n",argc);
         return 1;
     }
-    if(compareargc(argc,EAC)==1){
-        printf("W:Too many arguments:\nIgnoring arguments not required\n",argc);
-    }
+
+    unsigned char getSetBits = getSet(argv,argc);
 
 
     FILE* op = fopen(argv[1],"rb");
@@ -37,11 +38,15 @@ int main(int argc, char* argv[]){
                 fwrite(buffer,1,lastCopySize,np);
             }
             bSize pS = prettySize(copiedBytes);
-            printf("I:Moved: %0.2f%c bytes\n",pS.truncatedSize,pS.modifier);
+            if((getSetBits & 1<<1)==1<<1){
+                printf("I:Moved: %0.2f%c bytes\n",pS.truncatedSize,pS.modifier);
+            }
             // Now to delete old file
             fclose(np);
             if(!remove(argv[1])){
-                printf("I:%s removed\n",argv[1]);
+                if(CHECKBIT(1)){
+                    printf("I:%s removed\n",argv[1]);
+                }
             }
             else{
                 fprintf(stderr,"E:Could not remove old file\n");
