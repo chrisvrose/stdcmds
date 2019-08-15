@@ -1,12 +1,12 @@
 c = gcc
 options = -I include/
 
-all: cp.o gen.o mv.o rm.o ls.o
+all: gen.o cp.o mv.o rm.o ls.o
 	mkdir -p builds
 	$(c) -o builds/cp cp.o gen.o
 	$(c) -o builds/mv mv.o gen.o
 	$(c) -o builds/rm rm.o gen.o
-	$(c) -o builds/ls ls.o
+	$(c) -o builds/ls ls.o gen.o
 cp.o: src/cp.c
 	$(c) $(options) -c src/cp.c
 mv.o: src/mv.c
