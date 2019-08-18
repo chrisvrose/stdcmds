@@ -23,7 +23,7 @@ bSize prettySize(long int bytes){
 
             if(byteF>1024){
                 byteF/=1024;
-                //Giga
+                //Giga, we do not proceed further
                 returnable.modifier = 'G';
             }
         }
@@ -88,7 +88,7 @@ int findArgs(int argc,char* argv[],int startFromPosition){
 }
 
 ///Get the real number of arguments, skipping flags passed to program
-int getRealArg(char*  argv[],int argc){
+int getRealArgs(char*  argv[],int argc){
     int realArgs=0;
     for(int i=0;i<argc;i++){
         if(!isFlag(argv[i])){
@@ -96,4 +96,10 @@ int getRealArg(char*  argv[],int argc){
         }
     }
     return realArgs;
+}
+
+int strlen(char* str){
+    int i=-1;
+    while(str[++i]!='\0');
+    return i;
 }

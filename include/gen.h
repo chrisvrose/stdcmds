@@ -26,4 +26,6 @@ int findArgs(int,char**,int);
 
 int getRealArgs(char**,int);
 
+int strlen(char*);
+
 #endif
