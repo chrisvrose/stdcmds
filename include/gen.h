@@ -20,4 +20,8 @@ unsigned char getSet(char**,int);
 
 int compareargc(int,int);
 
+unsigned int isFlag(char*);
+
+int getRealArgs(char**,int);
+
 #endif

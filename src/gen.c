@@ -30,6 +30,7 @@ bSize prettySize(long int bytes){
         
     }
     else{
+        ///bytes require no character suffix
         returnable.modifier=' ';
     }
     returnable.truncatedSize = byteF;
@@ -41,7 +42,7 @@ bSize prettySize(long int bytes){
 unsigned char getSet(char** argv,int argc){
     unsigned char settings=0;
     for(int i=0;i<argc;i++){
-        if(argv[i][0]=='-'){
+        if(isFlag(argv[i])){
             for(int j=1;argv[i][j]!='\0';j++){
                 if(argv[i][j]=='l'){
                     settings |= 1<<0;
@@ -68,4 +69,20 @@ int compareargc(int argc,int expargc){
     else if(argc<expargc) return -1;
     else return 0;
     //return ();
+}
+
+///Return 1 if flag
+unsigned int isFlag(char* arg){
+    return arg[0]=='-';
+}
+
+///Get the real number of arguments, skipping flags passed to program
+int getRealArg(char*  argv[],int argc){
+    int realArgs=0;
+    for(int i=0;i<argc;i++){
+        if(!isFlag(argv[i])){
+            realArgs++;
+        }
+    }
+    return realArgs;
 }
