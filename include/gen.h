@@ -22,6 +22,8 @@ int compareargc(int,int);
 
 unsigned int isFlag(char*);
 
+int findArgs(int,char**,int);
+
 int getRealArgs(char**,int);
 
 #endif

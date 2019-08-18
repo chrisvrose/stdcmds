@@ -76,6 +76,17 @@ unsigned int isFlag(char* arg){
     return arg[0]=='-';
 }
 
+///Return -1 if not found any argument, else return the position in the array
+int findArgs(int argc,char* argv[],int startFromPosition){
+    int flagPos=-1;
+    for(int i=startFromPosition;i<argc;i++){
+        if(!isFlag(argv[i])){
+            flagPos=i;break;
+        }
+    }
+    return flagPos;
+}
+
 ///Get the real number of arguments, skipping flags passed to program
 int getRealArg(char*  argv[],int argc){
     int realArgs=0;
