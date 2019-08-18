@@ -97,9 +97,3 @@ int getRealArgs(char*  argv[],int argc){
     }
     return realArgs;
 }
-
-int strlen(char* str){
-    int i=-1;
-    while(str[++i]!='\0');
-    return i;
-}
