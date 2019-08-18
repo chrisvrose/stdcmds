@@ -10,7 +10,7 @@
 # define EAC 3
 
 int main(int argc, char* argv[]){
-    if (compareargc(argc,EAC)==-1){
+    if (compareargc(getRealArgs(argv,argc),EAC)==-1){
         fprintf(stderr,"E:Too few arguments: %d\nUsage: cp <oldpath> <newpath>\n",argc);
         return 1;
     }
