@@ -15,16 +15,27 @@ int main(int argc, char* argv[]){
         return 1;
     }
 
+    int argOne = findArgs(argc,argv,0);
+    if(argOne==-1){
+        fprintf(stderr,"E: No arguments\n");
+        return 1;
+    }
+    int argTwo = findArgs(argc,argv,argOne+1);
+    if(argTwo==-1){
+        fprintf(stderr,"E: One argument only");
+        return 1;
+    }
+
     unsigned char getSetBits = getSet(argv,argc);
 
 
-    FILE* op = fopen(argv[1],"rb");
+    FILE* op = fopen(argv[argOne],"rb");
     if(op==NULL){
         fprintf(stderr,"E:Source file could not be opened\n");
         return 2;
     }
     else{
-        FILE* np = fopen(argv[2],"wb+");
+        FILE* np = fopen(argv[argTwo],"wb+");
         if(np==NULL){
             fprintf(stderr,"E:Destination file cannot be used\n");
             return 3;
@@ -43,7 +54,7 @@ int main(int argc, char* argv[]){
             }
             // Now to delete old file
             fclose(np);
-            if(!remove(argv[1])){
+            if(!remove(argv[argOne])){
                 if(CHECKBIT(1)){
                     printf("I:%s removed\n",argv[1]);
                 }
