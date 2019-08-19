@@ -16,12 +16,13 @@ int main(int argc, char* argv[]){
         if(isFlag(argv[i])){
             continue;
         }
-        laststatus = remove(argv[i])==-1;
-        if(CHECKBIT(1)){
-            printf("I:%c: Removal - %s\n",!laststatus?'S':'F',argv[i]);
+        laststatus = remove(argv[i])==0;
+        if(laststatus){
+            if(CHECKBIT(1))
+                printf("I:%c: Removal - %s\n",!laststatus?'S':'F',argv[i]);
         }
         else{
-            fprintf(stderr,"E:Could not remove \"%s\"",argv[i]);
+            fprintf(stderr,"E:Could not remove \"%s\"\n",argv[i]);
         }
         statusflag=statusflag||laststatus;
     }

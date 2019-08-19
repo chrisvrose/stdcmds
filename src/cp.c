@@ -13,7 +13,7 @@ int main(int argc, char* argv[]){
         return 1;
     }
 
-    int argOne = findArgs(argc,argv,0);
+    int argOne = findArgs(argc,argv,1);
     if(argOne==-1){
         fprintf(stderr,"E: No arguments\n");
         return 1;
