@@ -4,6 +4,37 @@
 #include<gen.h>
 
 
+#define STRLEN 64
+
+
+int mergePaths(char* p1,char* p2,char* out,int outl){
+    int p1l=-1,p2l=-1;
+    while(p1[++p1l]);
+    while(p2[++p2l]);
+    ///2 null chars - > 1 null char + optional '/'
+    if(outl>p1l+p2l){
+        for(int i=0;i<p1l;i++){
+            out[i]=p1[i];
+        }
+        if(p1[p1l-1]=='/'){
+            /// '<=' to copy the null too
+            for(int j=0;j<=p2l;j++){
+                out[j+p1l]=p2[j];
+            }
+        }
+        else{
+            out[p1l]='/';
+            for(int j=0;j<=p2l;j++){
+                out[j+p1l+1]=p2[j];
+            }
+        }
+        return 0;
+    }
+    else{
+        ///Error with mismanaged lengths
+        return 1;
+    }
+}
 
 int main(int argc,char* argv[]){
     DIR* d;int a;
@@ -13,7 +44,7 @@ int main(int argc,char* argv[]){
         d = opendir(".");
     }
     else{
-        a = findArgs(argc,argv,0);
+        a = findArgs(argc,argv,1);
         if(a==-1){
             fprintf(stderr,"E:Could not find file\n");
             return 1;
