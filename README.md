@@ -11,5 +11,5 @@ College, thats why. Some very basic implementations of some standard commands fo
 
 ### Checklist for files
 
-- [ ] Implement looking for cp arguments
+- [X] Implement looking for cp arguments
 - [ ] Implement sys/stat.h functions in ls
