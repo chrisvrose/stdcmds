@@ -1,10 +1,10 @@
 c = gcc
-options = -Wall -g -I include/
+options = -Wall -I include/
 all: ready builds/temp/gen.o builds/temp/cp.o builds/temp/mv.o builds/temp/rm.o builds/temp/ls.o
 	$(c) -o builds/cp builds/temp/cp.o builds/temp/gen.o
 	$(c) -o builds/mv builds/temp/mv.o builds/temp/gen.o
 	$(c) -o builds/rm builds/temp/rm.o builds/temp/gen.o
-	$(c) -g -o builds/ls builds/temp/ls.o builds/temp/gen.o
+	$(c) -o builds/ls builds/temp/ls.o builds/temp/gen.o
 ready:
 	mkdir -p builds/temp
 builds/temp/cp.o: src/cp.c
